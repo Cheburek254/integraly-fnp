@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Читать границы области и менять порядок интегрирования.">
+  <title>Двойной интеграл · Интегралы ФНП</title>
+  <link rel="stylesheet" href="course.css">
+  <script src="course.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">К содержанию</a>
+  <header class="site-head"><div class="shell head-inner">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">∫</span><span>Интегралы ФНП</span></a>
+    <nav aria-label="Главная навигация"><a href="index.html#route">Уроки</a><a href="practice.html">Практикум</a></nav>
+  </div></header>
+  <div class="shell lesson-grid">
+  <aside class="lesson-side"><nav aria-label="Уроки курса"><p class="eyebrow">Программа</p><a href="01-idea.html"><span>01</span>Идея интеграла</a><a href="02-double.html" aria-current="page"><span>02</span>Двойной интеграл</a><a href="03-triple.html"><span>03</span>Тройной интеграл</a><a href="04-coordinates.html"><span>04</span>Системы координат</a><a href="05-jacobian.html"><span>05</span>Якобиан</a><a href="06-line.html"><span>06</span>Криволинейные интегралы</a><a href="07-surface.html"><span>07</span>Поверхностные интегралы</a><a href="08-theorems.html"><span>08</span>Грин, Стокс и Гаусс</a><a href="practice.html"><span>↗</span>Практикум</a></nav></aside>
+  <details class="mobile-route"><summary>Программа курса</summary><nav aria-label="Уроки курса"><a href="01-idea.html"><span>01</span>Идея интеграла</a><a href="02-double.html" aria-current="page"><span>02</span>Двойной интеграл</a><a href="03-triple.html"><span>03</span>Тройной интеграл</a><a href="04-coordinates.html"><span>04</span>Системы координат</a><a href="05-jacobian.html"><span>05</span>Якобиан</a><a href="06-line.html"><span>06</span>Криволинейные интегралы</a><a href="07-surface.html"><span>07</span>Поверхностные интегралы</a><a href="08-theorems.html"><span>08</span>Грин, Стокс и Гаусс</a><a href="practice.html"><span>↗</span>Практикум</a></nav></details>
+  <main class="lesson" id="main">
+    <header class="lesson-head"><p class="eyebrow">Урок 02 / 08</p><h1>Двойной интеграл</h1><p class="lead">Двойной интеграл суммирует значения функции по плоской области. Для вычисления обычно достаточно нарисовать область и описать её сечения.</p></header>
+    <section><h2>Как получить повторный интеграл</h2>
+        <p>Пусть проекция области <math><mrow><mi>D</mi></mrow></math> на ось <math><mrow><mi>x</mi></mrow></math> — отрезок <math><mrow><mo>[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>]</mo></mrow></math>. При фиксированном <math><mrow><mi>x</mi></mrow></math> вертикальное сечение идёт от <math><mrow><mi>y</mi><mo>=</mo><msub><mrow><mi>g</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math> до <math><mrow><mi>y</mi><mo>=</mo><msub><mrow><mi>g</mi></mrow><mrow><mn>2</mn></mrow></msub><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math>. Для непрерывной функции на такой области:</p>
+        <div class="equation"><math display="block"><mrow><msub><mo>∬</mo><mrow><mi>D</mi></mrow></msub><mi>f</mi><mo>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>)</mo><mspace width="0.18em"/><mi mathvariant="normal">d</mi><mi>A</mi><mo>=</mo><msubsup><mo>∫</mo><mrow><mi>a</mi></mrow><mrow><mi>b</mi></mrow></msubsup><msubsup><mo>∫</mo><mrow><msub><mrow><mi>g</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mrow><msub><mrow><mi>g</mi></mrow><mrow><mn>2</mn></mrow></msub><mo>(</mo><mi>x</mi><mo>)</mo></mrow></msubsup><mi>f</mi><mo>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>)</mo><mspace width="0.18em"/><mi mathvariant="normal">d</mi><mi>y</mi><mspace width="0.18em"/><mi mathvariant="normal">d</mi><mi>x</mi></mrow></math></div>
+        <p>Сначала интегрируйте по <math><mrow><mi>y</mi></mrow></math>, считая <math><mrow><mi>x</mi></mrow></math> постоянным. После подстановки внутренних пределов останется функция от <math><mrow><mi>x</mi></mrow></math>. Её интегрируют на отрезке <math><mrow><mo>[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>]</mo></mrow></math>.</p>
+        <p>Если <math><mrow><mi>f</mi><mo>=</mo><mn>1</mn></mrow></math>, результат равен площади <math><mrow><mi>D</mi></mrow></math>. Если <math><mrow><mi>f</mi><mo>≥</mo><mn>0</mn></mrow></math>, это объём между графиком <math><mrow><mi>z</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>)</mo></mrow></math> и плоскостью <math><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math>. Для функции с переменным знаком вклады ниже плоскости вычитаются.</p></section><figure class="diagram interactive" id="triangle">
+    <div class="diagram-top"><p class="eyebrow">Интерактивная схема</p><h3>Как сечение задаёт пределы</h3></div>
+    <div class="diagram-grid">
+      <svg viewBox="0 0 340 266" role="img" aria-label="Треугольник с вершинами (0,0), (1,0), (1,1) и выделенным сечением">
+        <path class="triangle-fill" d="M52 218 H252 V38 Z"/>
+        <path class="graph-grid" d="M52 118 H252 M152 218 V38"/>
+        <path class="graph-axis" d="M52 30 V218 H285 M48 37 L52 29 L56 37 M278 214 L286 218 L278 222"/>
+        <path class="graph-bound" d="M52 218 H252 V38 Z"/>
+        <path class="graph-tick" d="M248 38 H252 M252 218 V224 M46 38 H52"/>
+        <path id="slice-line" class="graph-slice" d="M172 218 V110"/>
+        <circle id="slice-start" class="graph-point" cx="172" cy="218" r="4.5"/>
+        <circle id="slice-end" class="graph-point" cx="172" cy="110" r="4.5"/>
+        <g class="graph-label"><text x="294" y="223">x</text><text x="43" y="21">y</text><text x="33" y="42">1</text><text x="245" y="244">1</text><text x="37" y="237">0</text><text x="94" y="154">y = x</text></g>
+      </svg>
+      <div class="diagram-controls">
+        <fieldset><legend>Направление сечения</legend>
+          <label><input type="radio" name="direction" value="vertical" checked> Вертикальное</label>
+          <label><input type="radio" name="direction" value="horizontal"> Горизонтальное</label>
+        </fieldset>
+        <label class="slider-label" for="slice-position"><span id="fixed-variable">Фиксируем x</span><output id="slice-value" for="slice-position">0,60</output></label>
+        <input type="range" id="slice-position" min="0" max="100" value="60" step="1">
+        <p id="slice-description" aria-live="polite">При x = 0,60 переменная y пробегает от 0 до 0,60.</p>
+        <noscript><p>Вертикальное сечение идёт от y = 0 до y = x. Горизонтальное идёт от x = y до x = 1.</p></noscript>
+      </div>
+    </div>
+    <figcaption>Оранжевый отрезок показывает диапазон внутренней переменной.</figcaption>
+    </figure><section class="example"><p class="eyebrow">Разбор</p><h2>Один треугольник, два порядка</h2>
+        <p>Вычислим <math><mrow><msub><mo>∬</mo><mrow><mi>D</mi></mrow></msub><mo>(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>)</mo><mspace width="0.18em"/><mi mathvariant="normal">d</mi><mi>A</mi></mrow></math> для треугольника <math><mrow><mn>0</mn><mo>≤</mo><mi>y</mi><mo>≤</mo><mi>x</mi><mo>≤</mo><mn>1</mn></mrow></math>. При вертикальном сечении внешняя переменная <math><mrow><mi>x</mi></mrow></math> бежит от 0 до 1, а внутренняя <math><mrow><mi>y</mi></mrow></math> — от 0 до <math><mrow><mi>x</mi></mrow></math>. Первообразная по y равна <math><mrow><mi>x</mi><mi>y</mi><mo>+</mo><msup><mrow><mi>y</mi></mrow><mn>2</mn></msup><mo>/</mo><mn>2</mn></mrow></math>. Подставляем y = x и вычитаем значение при y = 0.</p>
+        <div class="equation"><math display="block"><mrow><msubsup><mo>∫</mo><mrow><mn>0</mn></mrow><mrow><mn>1</mn></mrow></msubsup><msubsup><mo>∫</mo><mrow><mn>0</mn></mrow><mrow><mi>x</mi></mrow></msubsup><mo>(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>)</mo><mspace width="0.18em"/><mi mathvariant="normal">d</mi><mi>y</mi><mspace width="0.18em"/><mi mathvariant="normal">d</mi><mi>x</mi><mo>=</mo><msubsup><mo>∫</mo><mrow><mn>0</mn></mrow><mrow><mn>1</mn></mrow></msubsup><mo>(</mo><msup><mrow><mi>x</mi></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mi>x</mi></mrow><mn>2</mn></msup><mo>/</mo><mn>2</mn><mo>)</mo><mspace width="0.18em"/><mi mathvariant="normal">d</mi><mi>x</mi><mo>=</mo><mn>1</mn><mo>/</mo><mn>2</mn></mrow></math></div>
+        <p>При горизонтальном сечении внешняя переменная <math><mrow><mi>y</mi></mrow></math> бежит от 0 до 1, а внутренняя <math><mrow><mi>x</mi></mrow></math> — от <math><mrow><mi>y</mi></mrow></math> до 1. Перепишем оба предела и оба дифференциала.</p>
+        <div class="equation"><math display="block"><mrow><msubsup><mo>∫</mo><mrow><mn>0</mn></mrow><mrow><mn>1</mn></mrow></msubsup><msubsup><mo>∫</mo><mrow><mi>y</mi></mrow><mrow><mn>1</mn></mrow></msubsup><mo>(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>)</mo><mspace width="0.18em"/><mi mathvariant="normal">d</mi><mi>x</mi><mspace width="0.18em"/><mi mathvariant="normal">d</mi><mi>y</mi><mo>=</mo><msubsup><mo>∫</mo><mrow><mn>0</mn></mrow><mrow><mn>1</mn></mrow></msubsup><mo>(</mo><mn>1</mn><mo>/</mo><mn>2</mn><mo>+</mo><mi>y</mi><mo>−</mo><mn>3</mn><msup><mrow><mi>y</mi></mrow><mn>2</mn></msup><mo>/</mo><mn>2</mn><mo>)</mo><mspace width="0.18em"/><mi mathvariant="normal">d</mi><mi>y</mi><mo>=</mo><mn>1</mn><mo>/</mo><mn>2</mn></mrow></math></div></section><aside class="note"><strong>При смене порядка начните с рисунка</strong><p>Спроецируйте область на ось внешней переменной. Если границы сечения меняются по формуле или сечение распадается, разбейте область и запишите сумму интегралов.</p></aside><section class="task"><p class="eyebrow">Самопроверка</p><h2>Смена порядка</h2>
+    <p>Перепишите <math><mrow><msubsup><mo>∫</mo><mrow><mn>0</mn></mrow><mrow><mn>4</mn></mrow></msubsup><msubsup><mo>∫</mo><mrow><mo>√</mo><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msubsup><mi>f</mi><mo>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>)</mo><mspace width="0.18em"/><mi mathvariant="normal">d</mi><mi>y</mi><mspace width="0.18em"/><mi mathvariant="normal">d</mi><mi>x</mi></mrow></math> с внутренним интегрированием по x.</p><details><summary>Подсказка</summary><p>Условие <math><mrow><mo>√</mo><mi>x</mi><mo>≤</mo><mi>y</mi></mrow></math> при <math><mrow><mi>y</mi><mo>≥</mo><mn>0</mn></mrow></math> равносильно <math><mrow><mi>x</mi><mo>≤</mo><msup><mrow><mi>y</mi></mrow><mn>2</mn></msup></mrow></math>. Найдите проекцию на ось y.</p></details>
+    <details><summary>Решение</summary><div class="solution"><p><math><mrow><mn>0</mn><mo>≤</mo><mi>y</mi><mo>≤</mo><mn>2</mn></mrow></math>, для каждого y имеем <math><mrow><mn>0</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><msup><mrow><mi>y</mi></mrow><mn>2</mn></msup></mrow></math>.</p><div class="equation"><math display="block"><mrow><msubsup><mo>∫</mo><mrow><mn>0</mn></mrow><mrow><mn>2</mn></mrow></msubsup><msubsup><mo>∫</mo><mrow><mn>0</mn></mrow><mrow><msup><mrow><mi>y</mi></mrow><mn>2</mn></msup></mrow></msubsup><mi>f</mi><mo>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>)</mo><mspace width="0.18em"/><mi mathvariant="normal">d</mi><mi>x</mi><mspace width="0.18em"/><mi mathvariant="normal">d</mi><mi>y</mi></mrow></math></div></div></details></section>
+    <div class="source-line">Лекции О. П. Далевской · § 5.3 · с. 40–42</div>
+    <nav class="pager" aria-label="Переход между уроками"><a href="01-idea.html">← Идея интеграла</a><a href="03-triple.html">Тройной интеграл →</a></nav>
+  </main>
+</div>
+  <footer class="site-foot"><div class="shell"><span>Математический анализ / Интегралы ФНП</span><a href="index.html#route">К списку уроков ↑</a></div></footer>
+</body>
+</html>
